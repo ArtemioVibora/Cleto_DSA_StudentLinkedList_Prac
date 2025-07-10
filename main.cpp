@@ -32,12 +32,21 @@ int countStudents(STUDENT *pStart) {
 
 void locateNode(STUDENT *pStart, int studID) {
     STUDENT *p = pStart;
+    int count = 1;
 
     if (isEmpty(p)) {
         cout << "List is empty" << endl;
     }
     else {
         while (p != NULL && p->studentID != studID) {
+            p = p->next;
+            ++count;
+        }
+        if (p == NULL) {
+            cout << "Student with " << studID << " not found" << endl;
+        }
+        else {
+            cout << "Student with " << studID << " found" << endl;
 
         }
     }
