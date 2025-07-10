@@ -12,6 +12,22 @@ struct STUDENT {
     STUDENT *next;
 };
 
+bool isEmpty(STUDENT *pStart) {
+    if (pStart == NULL) {
+        return true;
+    }
+    return false;
+}
+
+int countStudents(STUDENT *pStart) {
+    STUDENT *p = pStart;
+    int count = 0;
+    while (p != NULL) {
+        ++count;
+    }
+    return count;
+}
+
 void addNewStudent(STUDENT **student, char n[], char sn[], char a[], int age, int studentID) {
     STUDENT *newStudent, *ptr2;
     newStudent = (STUDENT *)malloc(sizeof(STUDENT));
