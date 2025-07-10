@@ -3,6 +3,8 @@
 #include <cstring>
 //Single LinkedList
 
+using namespace std;
+
 struct STUDENT {
     char name[100];
     char surname[100];
@@ -26,6 +28,14 @@ int countStudents(STUDENT *pStart) {
         ++count;
     }
     return count;
+}
+
+void locateNode(STUDENT *pStart) {
+    STUDENT *p = pStart;
+
+    if (isEmpty(p)) {
+        cout << "List is empty" << endl;
+    }
 }
 
 void addNewStudent(STUDENT **student, char n[], char sn[], char a[], int age, int studentID) {
