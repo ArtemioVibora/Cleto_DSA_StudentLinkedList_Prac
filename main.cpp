@@ -14,6 +14,7 @@ struct STUDENT {
     STUDENT *next;
 };
 
+// Student operations
 bool isEmpty(STUDENT *pStart) {
     if (pStart == NULL) {
         return true;
@@ -52,6 +53,19 @@ void locateNode(STUDENT *pStart, int studID) {
     }
 }
 
+void printStudents(STUDENT *pStart) {
+    STUDENT *p = pStart;
+
+    while (p != NULL) {
+        cout << p->name << endl;
+        cout << p->surname << endl;
+        cout << p->address << endl;
+        cout << p->age << endl;
+        cout << p->studentID << endl;
+        p = p->next;
+    }
+}
+
 void addNewStudent(STUDENT **student, char n[], char sn[], char a[], int age, int studentID) {
     STUDENT *newStudent, *ptr2;
     newStudent = (STUDENT *)malloc(sizeof(STUDENT));
@@ -60,6 +74,45 @@ void addNewStudent(STUDENT **student, char n[], char sn[], char a[], int age, in
     strcpy(newStudent->address, a);
     newStudent->age = age;
     newStudent->studentID = studentID;
+    newStudent->next = NULL;
+    if (*student == NULL) {
+        *student = newStudent;
+    }
+    else {
+        ptr2 = *student;
+        while (ptr2->next != NULL) {
+            ptr2 = ptr2->next;
+        }
+        ptr2->next = newStudent;
+    }
+}
+
+//Student operations end
+//Filter programs
+
+int agePrompt() {
+    int age;
+    cout << "Enter your age: ";
+    while (!(cin >> age) || age < 3 || age > 99) {
+        cin.clear();
+        cin.ignore(256, '\n');
+        cout << "Enter your age: ";
+    }
+    return age;
+}
+
+int studentIDPrompt() {
+    int studentID;
+    cout << "Enter your student ID: ";
+    while (!(cin >> studentID) || studentID < 1) {
+        cin.clear();
+        cin.ignore(256, '\n');
+        cout << "Enter your student ID: ";
+    }
+}
+
+void runProgram() {
+
 }
 
 int main() {
