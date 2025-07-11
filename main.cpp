@@ -87,6 +87,12 @@ void addNewStudent(STUDENT **student, char n[], char sn[], char a[], int age, in
     }
 }
 
+void removeStudent(STUDENT **student, int studentID) {
+    STUDENT *p, *before, *here;
+
+
+}
+
 //Student operations end
 //Filter programs
 
@@ -109,6 +115,12 @@ int studentIDPrompt() {
         cin.ignore(256, '\n');
         cout << "Enter your student ID: ";
     }
+}
+
+//Misc program
+
+void menu(int numberOfStudents) {
+
 }
 
 void runProgram() {
