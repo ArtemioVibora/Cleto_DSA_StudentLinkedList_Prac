@@ -31,7 +31,7 @@ int countStudents(STUDENT *pStart) {
     return count;
 }
 
-void locateNode(STUDENT *pStart, int studID) {
+void locateStudent(STUDENT *pStart, int studID) {
     STUDENT *p = pStart;
     int count = 1;
 
@@ -147,13 +147,74 @@ int studentIDPrompt() {
 //Misc program
 
 void menu(int numberOfStudents) {
-
+    cout << "==============================" << endl;
+    cout << "<1> Add a student" << endl;
+    cout << "<2> Remove a student" << endl;
+    cout << "<3> Locate a student" << endl;
+    cout << "<4> Print all students" << endl;
+    cout << "<5> Exit" << endl;
+    cout << "==============================" << endl;
+    cout << "There are " << numberOfStudents << " students" << endl;
+    cout << "------------------------------" << endl;
+    cout << ">>>> ";
 }
 
 void runProgram() {
+    STUDENT *student;
+    student = NULL;
 
+    char name[100], surname[100], address[100];
+
+    int studentID, age, input, numberOfStudents;
+
+    numberOfStudents = countStudents(student);
+
+    while (input != 5) {
+        numberOfStudents = countStudents(student);
+        menu(numberOfStudents);
+        while (!(cin >> input)) {
+            cin.clear();
+            cin.ignore(256, '\n');
+            cout << "ERROR!" << endl;
+            menu(numberOfStudents);
+        }
+        switch (input) {
+            case 1:
+                cout << "Enter Name: ";
+                cin.get(name, 100);
+                cin.get();
+                cout << "Enter Surname: ";
+                cin.get(surname, 100);
+                cin.get();
+                cout << "Enter Address: ";
+                cin.get(address, 100);
+                cin.get();
+                age = agePrompt();
+                studentID = studentIDPrompt();
+                addNewStudent(&student, name, surname, address, age, studentID);
+                break;
+            case 2:
+                cout << "Enter Student ID: ";
+                studentID = studentIDPrompt();
+                removeStudent(&student, studentID);
+                break;
+            case 3:
+                cout << "Enter Student ID: ";
+                studentID = studentIDPrompt();
+                locateStudent(student, studentID);
+                break;
+            case 4:
+                cout << "PRINT ALL STUDENTS" << endl;
+                printStudents(student);
+                break;
+            case 5:
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 int main() {
-
+    runProgram();
 }
