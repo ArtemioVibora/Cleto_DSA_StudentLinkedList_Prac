@@ -88,7 +88,20 @@ void addNewStudent(STUDENT **student, char n[], char sn[], char a[], int age, in
 }
 
 void removeStudent(STUDENT **student, int studentID) {
-    STUDENT *p, *before, *here;
+    STUDENT *before, *discard;
+
+    discard = *student;
+
+    if (isEmpty(*student)) {
+        cout << "List is empty" << endl;
+    }
+    else {
+        if ((*student)->studentID == studentID) {
+            *student = (*student)->next;
+            free(discard);
+            cout << "Student with " << studentID << " removed" << endl;
+        }
+    }
 
 
 }
