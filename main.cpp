@@ -101,6 +101,20 @@ void removeStudent(STUDENT **student, int studentID) {
             free(discard);
             cout << "Student with " << studentID << " removed" << endl;
         }
+        else {
+            while (discard != NULL && discard->studentID != studentID) {
+                before = discard;
+                discard = discard->next;
+            }
+            if (discard == NULL) {
+                cout << "Student with " << studentID << " not found" << endl;
+            }
+            else {
+                before->next = discard->next;
+                free(discard);
+                cout << "Student with " << studentID << " removed" << endl;
+            }
+        }
     }
 
 
